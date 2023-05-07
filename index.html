@@ -10,9 +10,42 @@
 </head>
 
 <body>
+    <header class="header">
+        <h1>weather dashboard</h1>
+    </header>
+    <main>
+        <section class="search">
+            <h2 class="h2-heading">search for a city:</h2>
+            <form action="#" class="form">
+                <label for="city" class="form-label"></label>
+                <input type="text" name="city" id="city" class="form-input">
+                <button class="btn form-btn">search</button>
+            </form>
+            <span></span>
+            <button class="btn">city</button>
+        </section>
 
+        <section class="current">
+            <div class="day-box">
+                <h2 class="h2-heading">san diego (01/01/2022)</h2>
+                <p class="par">temp:</p>
+                <p class="par">wind:</p>
+                <p class="par">humidity:</p>
+            </div>
 
-
+            <div class="week-box">
+                <h3 class="h3-heading">5 day forecast</h3>
+                <div class="cards-box">
+                    <div class="card">
+                        <h3>01/01/2022</h3>
+                        <p class="par">temp:</p>
+                        <p class="par">wind:</p>
+                        <p class="par">humidity:</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
     <script src="assets/script.js"></script>
 </body>
 
