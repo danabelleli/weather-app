@@ -1,0 +1,94 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: 'Lexend Deca', sans-serif;
+}
+
+.header {
+    background-image: linear-gradient(to right bottom, #03045e, #48cae4);
+    height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.h1-heading {
+    color: white;
+    text-transform: capitalize;
+    font-size: 4rem;
+}
+
+.main {
+    display: flex;
+    justify-content: space-between;
+}
+
+.search {
+    width: 25vw;
+    background-color: aliceblue;
+    height: 90vh;
+    padding: 2rem 2rem;
+}
+
+.h2-heading {
+    font-size: 2.5rem;
+    text-transform: capitalize;
+}
+
+span {
+    display: block;
+    width: 100%;
+    border-top: 1.5px solid black;
+    margin: 2rem 0;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.form-input {
+    height: 4rem;
+    margin: 1rem 0;
+    border-radius: 5px;
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    border: 1px solid black;
+    padding-left: 1rem;
+    text-transform: capitalize;
+}
+
+.btn {
+    height: 3.5rem;
+    width: 44rem;
+    font-family: 'Lexend Deca', sans-serif;
+    font-size: 1.5rem;
+    text-transform: capitalize;
+    background-color: #adb5bd;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: #777d83;
+}
+
+.form-btn {
+    background-color: #118ab2;
+}
+
+.form-btn:hover {
+    background-color: #0d5b75;
+}
