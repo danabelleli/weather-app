@@ -28,18 +28,22 @@ body {
 
 .main {
     display: flex;
-    justify-content: space-between;
+    margin: 0 10rem;
 }
 
 .search {
     width: 25vw;
-    background-color: aliceblue;
     height: 90vh;
     padding: 2rem 2rem;
 }
 
 .h2-heading {
     font-size: 2.5rem;
+    text-transform: capitalize;
+}
+
+.h3-heading {
+    font-size: 2rem;
     text-transform: capitalize;
 }
 
@@ -91,4 +95,42 @@ span {
 
 .form-btn:hover {
     background-color: #0d5b75;
+}
+
+.current {
+    display: flex;
+    flex-direction: column;
+    width: 75vw;
+    padding: 2rem 2rem;
+}
+
+.day-box {
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 2rem 2rem;
+}
+
+.par {
+    font-size: 1.6rem;
+    text-transform: capitalize;
+    margin-top: 1.5rem;
+}
+
+.week-box {
+    margin-top: 2rem;
+}
+
+.cards-box {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.card {
+    background-color: #001d3d;
+    width: 20rem;
+    height: 25rem;
+    border-radius: 5px;
+    color: white;
+    padding: 2rem 2rem;
 }
