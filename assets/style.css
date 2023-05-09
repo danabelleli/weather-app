@@ -28,7 +28,7 @@ body {
 
 .main {
     display: flex;
-    margin: 0 10rem;
+    margin: 0 2rem;
 }
 
 .search {
@@ -74,7 +74,7 @@ span {
 
 .btn {
     height: 3.5rem;
-    width: 44rem;
+    width: 32rem;
     font-family: 'Lexend Deca', sans-serif;
     font-size: 1.5rem;
     text-transform: capitalize;
@@ -128,7 +128,7 @@ span {
 
 .card {
     background-color: #001d3d;
-    width: 20rem;
+    width: 18rem;
     height: 25rem;
     border-radius: 5px;
     color: white;
