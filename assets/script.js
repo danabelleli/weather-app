@@ -42,13 +42,31 @@ function getWeather() {
 
 }
 
+// display the weather function
 function displayWeatherData(weatherData) {
+    // display current day
     dayHeader.textContent = weatherData.city.name + ' (' + (new Date(weatherData.list[0].dt_txt)).toDateString() + ')';
-    dayTemp.textContent = 'Temp: ' + weatherData.list[0].main.temp;
-    dayWind.textContent = 'Wind: ' + weatherData.list[0].wind.speed;
-    dayHumidity.textContent = 'Humidity: ' + weatherData.list[0].main.humidity;
+    dayTemp.textContent = 'Temp: ' + weatherData.list[0].main.temp + ' °F';
+    dayWind.textContent = 'Wind: ' + weatherData.list[0].wind.speed + ' MPH';
+    dayHumidity.textContent = 'Humidity: ' + weatherData.list[0].main.humidity + ' %';
     var icon = weatherData.list[0].weather[0].icon;
     headerIcon.innerHTML = `<img src="https://openweathermap.org/img/wn/${icon}.png">`;
+
+    // finding current day
+    var day = new Date(weatherData.list[0].dt - weatherData.city.timezone);
+
+    var day1 = new Date((weatherData.list[0].dt + weatherData.city.timezone) * 1000);
+    console.log(day1.toDateString());
+    var currentDay = day.getDate();
+    var currentHour = day.getHours();
+    console.log(currentHour);
+    console.log(currentDay);
+
+    // display next 5 day
+    for (var i = 1; i <= weatherData.list.length; i++) {
+        var timeStamp = weatherData.list[i];
+
+    }
 }
 
 
