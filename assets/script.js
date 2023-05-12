@@ -12,7 +12,7 @@ var lat;
 
 function convertCityPosition() {
     // url for getting the city lat and lon
-    var locationUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName.value}&limit=1&appid=${weatherApiKey}`;
+    var locationUrl = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName.value}&limit=1&appid=${weatherApiKey}`;
 
     fetch(locationUrl)
         .then(function (response) {
@@ -30,7 +30,7 @@ function convertCityPosition() {
 // get weather function
 function getWeather() {
     // weather url
-    var weatherUrl = `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${weatherApiKey}`;
+    var weatherUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=imperial&appid=${weatherApiKey}`;
 
     fetch(weatherUrl)
         .then(function (response) {
