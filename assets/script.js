@@ -53,23 +53,35 @@ function displayWeatherData(weatherData) {
     headerIcon.innerHTML = `<img src="https://openweathermap.org/img/wn/${icon}.png">`;
 
     // finding current day
-    var day = new Date(weatherData.list[0].dt - weatherData.city.timezone);
+    // finding current day    
+    var Day = new Date(weatherData.list[0].dt_txt);
+    var currentDay = Day.getDate();
 
-    var day1 = new Date((weatherData.list[0].dt + weatherData.city.timezone) * 1000);
-    console.log(day1.toDateString());
-    var currentDay = day.getDate();
-    var currentHour = day.getHours();
-    console.log(currentHour);
-    console.log(currentDay);
+    var weekDay = 1;
 
-    // display next 5 day
-    for (var i = 1; i <= weatherData.list.length; i++) {
-        var timeStamp = weatherData.list[i];
+    // Display weather for the next 5 days
+    for (var i = 1; i <= weatherData.list.length - 1; i++) {
 
+        if (weekDay <= 5) {
+            var d = new Date(weatherData.list[i].dt_txt);
+            var intDay = d.getDate();
+            var inthour = d.getHours();
+
+            // Set the values for the next day 
+            if (intDay = (currentDay + 1) && inthour == 12) {
+                currentDay = intDay;
+
+                document.querySelector('#weekDay_H_' + weekDay).innerHTML = d.toDateString();
+                document.querySelector('#weekDay_T_' + weekDay).innerHTML = weatherData.list[i].main.temp + ' °F';
+                document.querySelector('#weekDay_W_' + weekDay).innerHTML = 'Wind: ' + weatherData.list[i].wind.speed + ' MPH';
+                document.querySelector('#weekDay_U_' + weekDay).innerHTML = 'Humidity: ' + weatherData.list[i].main.humidity + ' %';
+                icon = weatherData.list[i].weather[0].icon;
+                document.querySelector('#weekDay_Icon_' + weekDay).innerHTML = `<img src="https://openweathermap.org/img/wn/${icon}.png">`;
+
+                weekDay += 1;
+            }
+        }
     }
 }
-
-
-
 
 btnSearch.addEventListener('click', convertCityPosition);
