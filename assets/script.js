@@ -8,6 +8,7 @@ var dayHumidity = document.querySelector('#day_humidity');
 var headerIcon = document.querySelector('.weather-icon');
 var cityInput = document.querySelector('#city');
 var sectionSearch = document.querySelector('.search');
+var historyButtons = document.querySelector('#historyButtons');
 
 var lon;
 var lat;
@@ -39,7 +40,6 @@ function getWeather() {
         .then(function (response) {
             return response.json();
         }).then(function (data) {
-            console.log(data);
             displayWeatherData(data);
         })
 
@@ -55,16 +55,15 @@ var setSearchHistory = function () {
 var renderSearchHistory = function () {
     // Get the local storage values
     searchHistory = JSON.parse(localStorage.getItem('searchHistory'));
-
+    historyButtons.textContent = '';
     // Add cities to to searchHistory
     for (var i = 0; i < searchHistory.length; i++) {
         var cityBtn = document.createElement('button');
         cityBtn.textContent = searchHistory[i];
+        cityBtn.setAttribute('data-name', searchHistory[i]);
         cityBtn.setAttribute('data-index', i);
         cityBtn.classList.add('btn');
-
-        sectionSearch.appendChild(cityBtn);
-        console.log(cityBtn);
+        historyButtons.appendChild(cityBtn);
     }
 }
 
@@ -110,7 +109,6 @@ function displayWeatherData(weatherData) {
     }
 
     var cityBtnText = cityInput.value;
-    console.log(cityBtnText);
     if (cityBtnText === '') {
         return;
     } else {
@@ -133,3 +131,9 @@ function displayWeatherData(weatherData) {
 
 btnSearch.addEventListener('click', convertCityPosition);
 
+historyButtons.addEventListener('click', function (event) {
+    var element = event.target;
+    var cityName = element.getAttribute("data-name");
+    cityInput.value = cityName;
+    btnSearch.click();
+});
