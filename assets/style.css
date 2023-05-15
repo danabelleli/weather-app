@@ -83,6 +83,7 @@ span {
     border-radius: 5px;
     color: white;
     cursor: pointer;
+    margin: .5rem 0;
 }
 
 .btn:hover {

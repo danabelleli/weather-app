@@ -5,7 +5,9 @@ var dayTemp = document.querySelector('#day_temp');
 var dayHeader = document.querySelector('#day_header');
 var dayWind = document.querySelector('#day_wind');
 var dayHumidity = document.querySelector('#day_humidity');
-let headerIcon = document.querySelector('.weather-icon');
+var headerIcon = document.querySelector('.weather-icon');
+var cityInput = document.querySelector('#city');
+var sectionSearch = document.querySelector('.search');
 
 var lon;
 var lat;
@@ -42,6 +44,31 @@ function getWeather() {
 
 }
 
+var searchHistory = [];
+
+// Set value in local storage
+var setSearchHistory = function () {
+    localStorage.setItem('searchHistory', JSON.stringify(searchHistory));
+}
+
+// Render values from local storage 
+var renderSearchHistory = function () {
+    // Get the local storage values
+    searchHistory = JSON.parse(localStorage.getItem('searchHistory'));
+
+    // Add innitials to list
+    for (var i = 0; i < searchHistory.length; i++) {
+        var cityBtn = document.createElement('button');
+        cityBtn.textContent = searchHistory[i];
+        cityBtn.setAttribute('data-index', i);
+        cityBtn.classList.add('btn');
+
+        sectionSearch.appendChild(cityBtn);
+        console.log(cityBtn);
+    }
+}
+
+
 // display the weather function
 function displayWeatherData(weatherData) {
     // display current day
@@ -52,8 +79,7 @@ function displayWeatherData(weatherData) {
     var icon = weatherData.list[0].weather[0].icon;
     headerIcon.innerHTML = `<img src="https://openweathermap.org/img/wn/${icon}.png">`;
 
-    // finding current day
-    // finding current day    
+    // finding current day  
     var Day = new Date(weatherData.list[0].dt_txt);
     var currentDay = Day.getDate();
 
@@ -82,6 +108,23 @@ function displayWeatherData(weatherData) {
             }
         }
     }
+
+    var cityBtnText = cityInput.value;
+    console.log(cityBtnText);
+    if (cityBtnText === '') {
+        return;
+    } else {
+        // check if local storage exist 
+        if (localStorage.getItem('searchHistory') !== null) {
+            searchHistory = JSON.parse(localStorage.getItem('searchHistory'));
+        }
+        searchHistory.push(cityBtnText.toUpperCase());
+        cityInput.value = '';
+        setSearchHistory();
+        renderSearchHistory();
+    }
+
 }
 
 btnSearch.addEventListener('click', convertCityPosition);
+
