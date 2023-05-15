@@ -11,6 +11,7 @@ var sectionSearch = document.querySelector('.search');
 
 var lon;
 var lat;
+var searchHistory = [];
 
 function convertCityPosition() {
     // url for getting the city lat and lon
@@ -44,7 +45,6 @@ function getWeather() {
 
 }
 
-var searchHistory = [];
 
 // Set value in local storage
 var setSearchHistory = function () {
@@ -56,7 +56,7 @@ var renderSearchHistory = function () {
     // Get the local storage values
     searchHistory = JSON.parse(localStorage.getItem('searchHistory'));
 
-    // Add innitials to list
+    // Add cities to to searchHistory
     for (var i = 0; i < searchHistory.length; i++) {
         var cityBtn = document.createElement('button');
         cityBtn.textContent = searchHistory[i];
@@ -118,10 +118,15 @@ function displayWeatherData(weatherData) {
         if (localStorage.getItem('searchHistory') !== null) {
             searchHistory = JSON.parse(localStorage.getItem('searchHistory'));
         }
-        searchHistory.push(cityBtnText.toUpperCase());
-        cityInput.value = '';
-        setSearchHistory();
-        renderSearchHistory();
+        if (searchHistory.includes(cityBtnText)) {
+            cityInput.value = '';
+            return;
+        } else {
+            searchHistory.push(cityBtnText);
+            cityInput.value = '';
+            setSearchHistory();
+            renderSearchHistory();
+        }
     }
 
 }
